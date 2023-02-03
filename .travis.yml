@@ -1,0 +1,8 @@
+sudo: required
+services:
+  - docker
+before_install:
+  - docker build -t react-app-img -f  Dockerfile.dev .
+
+script:
+  - docker run -e CI=true react-app-img npm run test -- --coverage
